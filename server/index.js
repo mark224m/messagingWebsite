@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 
 //this code is for handling all messages on global board
 app.get('/messages', (req, res) => {
+    console.log("working get request");
     messages.getAll().then((messages) => {
         res.json(messages);
     });
