@@ -1,6 +1,6 @@
 {
     "rewrites": [
-      { "source": "/api/messages", "destination": "/api/messages.js" },
-      { "source": "/api/messages/:dynamicParam", "destination": "/api/messages.js" }
+      { "source": "/api/messages", "destination": "/api/index.js" },
+      { "source": "/api/messages/:dynamicParam", "destination": "/api/index.js" }
     ]
   }
