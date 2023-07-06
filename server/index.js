@@ -62,3 +62,5 @@ const port = process.env.PORT || 1234; //this is so that if the app gets exporte
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
+
+module.exports = app
