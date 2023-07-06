@@ -40,7 +40,7 @@
 </template>
   
 <script>
-const API_URL = 'https://message-boardbackend-hsqjiwhf6-marcus224m-gmailcom.vercel.app/messages'
+const API_URL = 'https://message-board-self.vercel.app/#/messages'
 
 export default {
   name: 'app',
