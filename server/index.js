@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
     });
 });
 
+//this code is for handling all messages on global board
 app.get('/messages', (req, res) => {
     messages.getAll().then((messages) => {
         res.json(messages);
@@ -27,6 +28,27 @@ app.get('/messages', (req, res) => {
 app.post('/messages', (req, res) => {
     console.log(req.body);
     messages.create(req.body).then((message) => {
+        console.log("checking");
+        res.json(message);
+    }).catch((error) => {
+        res.status(500);
+        res.json(error.message);
+    });
+});
+
+//this code is for the other boards under topics section
+app.get('/messages/:dynamicParam', (req, res) => {
+    const dynamicParam = req.params.dynamicParam;
+
+    messages.getAllDynamic(dynamicParam).then((messages) => {
+        res.json(messages);
+    });
+});
+app.post('/messages/:dynamicParam', (req, res) => {
+    const dynamicParam = req.params.dynamicParam;
+
+    console.log(req.body);
+    messages.dynamicCreate(req.body, dynamicParam).then((message) => {
         console.log("checking");
         res.json(message);
     }).catch((error) => {
