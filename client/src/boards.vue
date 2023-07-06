@@ -60,7 +60,7 @@ export default {
   },
   mounted() {
     const dynamicParam = this.$route.params.id;
-    const API_URL = `https://message-boardbackend-hsqjiwhf6-marcus224m-gmailcom.vercel.app/messages/${dynamicParam}`;
+    const API_URL = `https://message-board-self.vercel.app/#/messages/${dynamicParam}`;
     console.log(this.$route.params.id);
     fetch(API_URL).then(response => response.json()).then(result => {
       this.messages = result;
@@ -69,7 +69,7 @@ export default {
   methods: {
     addMessage() {
         const dynamicParam = this.$route.params.id;
-        const API_URL = `https://message-boardbackend-hsqjiwhf6-marcus224m-gmailcom.vercel.app/messages/${dynamicParam}`;
+        const API_URL = `https://message-board-self.vercel.app/#/messages/${dynamicParam}`;
       console.log(this.message);
       axios
       .post(API_URL, this.message, {
