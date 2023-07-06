@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 //this code is for handling all messages on global board
 app.get('/messages', (req, res) => {
     console.log("working get request");
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     messages.getAll().then((messages) => {
         res.json(messages);
     });
@@ -40,7 +41,7 @@ app.post('/messages', (req, res) => {
 //this code is for the other boards under topics section
 app.get('/messages/:dynamicParam', (req, res) => {
     const dynamicParam = req.params.dynamicParam;
-
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     messages.getAllDynamic(dynamicParam).then((messages) => {
         res.json(messages);
     });
