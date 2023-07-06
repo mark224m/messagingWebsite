@@ -40,7 +40,7 @@
 </template>
   
 <script>
-const API_URL = 'https://message-board-self.vercel.app/#/messages'
+const API_URL = 'https://mb-backend-c109f952ed09.herokuapp.com/messages'
 
 export default {
   name: 'app',
