@@ -11,6 +11,11 @@ const messages = db.get('messages');
 function getAll() {
     return messages.find();
 }
+
+function getAllDynamic(dynamicParam){
+    const dyMessages = db.get(dynamicParam);
+    return dyMessages.find();
+}
 /*
 username
 subject
@@ -24,6 +29,7 @@ function create(message){
 
     const result = schema.validate(message);
     if(result.error == null){
+        console.log("not error");
         message.created = new Date();
         return Promise.resolve(messages.insert(message));
     }
@@ -31,8 +37,26 @@ function create(message){
         return Promise.reject(result.error);
     }
 }
+function dynamicCreate(message, dynamicParam){
+    if(!message.username) message.username = 'anonymous';
+    const dyMessages = db.get(dynamicParam);
+
+    const result = schema.validate(message);
+    if(result.error == null){
+        console.log("not error");
+        message.created = new Date();
+        message.dynamicParam = dynamicParam;
+        return Promise.resolve(dyMessages.insert(message));
+    }
+    else{
+        console.log("error in db");
+        return Promise.reject(result.error);
+    }
+}
 
 module.exports = {
     getAll,
-    create
+    create,
+    dynamicCreate,
+    getAllDynamic
 };
